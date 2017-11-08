@@ -16,10 +16,10 @@
 
 /* SECTION: RT_DEBUG */
 /* Thread Debug */
-#define RT_DEBUG
-#define RT_THREAD_DEBUG
+//#define RT_DEBUG
+//#define RT_THREAD_DEBUG
 
-#define RT_USING_OVERFLOW_CHECK
+//#define RT_USING_OVERFLOW_CHECK
 
 /* Using Hook */
 //#define RT_USING_HOOK

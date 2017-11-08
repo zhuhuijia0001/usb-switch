@@ -140,7 +140,7 @@ static void rt_switch_task_entry(void* parameter)
 		case CMD_SWITCH_MAINBOARD:
 			TRACE("start switch mainboard,port:%d\r\n", msg.content.port);
 
-			rt_thread_delay(100 * RT_TICK_PER_SECOND / 1000ul);
+			delay(100ul);
 			switch_main_board(msg.content.port);
 			
 			TRACE("finished switch mainboard,port:%d\r\n", msg.content.port);
@@ -158,13 +158,13 @@ static void rt_switch_task_entry(void* parameter)
 			//first disable all slave board
 			disable_all_slave_board();
 			//delay some time
-			delay(100);
+			delay(100ul);
 			//switch port
 			switch_main_board(msg.content.switch_slave_port.main_port);
 			switch_slave_board(msg.content.switch_slave_port.slave_port);
 			
 			//delay some time 
-			delay(3000);
+			delay(3000ul);
 			//enable
 			enable_slave_board(msg.content.switch_slave_port.main_port);
 			
