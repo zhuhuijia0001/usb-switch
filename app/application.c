@@ -32,8 +32,10 @@
 
 #include "trace.h"
 
-//for limit use
-#define USE_LIMIT      1
+//TODO: for limit use, comment it later
+//#define USE_LIMIT      1
+
+#define LIMIT_TIME     (5 * 60 * 1000ul)
 
 static void rt_init_thread_entry(void* parameter)
 {
@@ -42,6 +44,7 @@ static void rt_init_thread_entry(void* parameter)
     rt_components_init();
 #endif
 
+	//switch all ports to 0
 	switch_main_board(0);
 	switch_slave_board(0);
 	enable_slave_board(0);
@@ -50,7 +53,7 @@ static void rt_init_thread_entry(void* parameter)
 	start_usb_task();
 
 	//delay several minutes
-	rt_thread_delay(3 * 60 * 1000 * RT_TICK_PER_SECOND / 1000ul);
+	rt_thread_delay(rt_tick_from_millisecond(LIMIT_TIME));
 	
 #ifdef USE_LIMIT
 	//for use limit

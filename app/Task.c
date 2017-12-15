@@ -112,7 +112,7 @@ static void rt_usb_task_entry(void* parameter)
 
 static void delay(rt_uint32_t ms)
 {
-	rt_thread_delay(ms * RT_TICK_PER_SECOND / 1000ul);
+	rt_thread_delay(rt_tick_from_millisecond(ms));
 }
 
 static void rt_switch_task_entry(void* parameter)
