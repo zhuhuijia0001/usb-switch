@@ -5,7 +5,7 @@
 /**
  * Initilize switch.
  */
-extern void init_switch(void);
+extern int init_switch(void);
 
 /**
  * Switch port on main board.

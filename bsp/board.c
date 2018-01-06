@@ -16,20 +16,11 @@
 #include <rthw.h>
 #include <rtthread.h>
 
-#include "stm32f10x.h"
-
-#include "usb_lib.h"
-#include "hw_config.h"
-#include "usb_pwr.h"
-
 #include "board.h"
 #include "usart.h"
 
 #include "Switch.h"
-
-#ifdef  RT_USING_COMPONENTS_INIT
-#include <components.h>
-#endif  /* RT_USING_COMPONENTS_INIT */
+#include "usb.h"
 
 /**
  * @addtogroup STM32
@@ -85,12 +76,9 @@ void rt_hw_board_init(void)
    	rt_console_set_device(RT_CONSOLE_DEVICE_NAME);
 
 	/* Initilize switch */
-	init_switch();
+	//init_switch();
 
-	/* Initilize Usb */
-	USB_Interrupts_Config();    
-	Set_USBClock();   
-	USB_Init();	 
+	//init_usb();
 	
 #ifdef RT_USING_COMPONENTS_INIT
     rt_components_board_init();

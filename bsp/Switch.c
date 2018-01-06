@@ -7,7 +7,7 @@
 
 #include "trace.h"
 
-void init_switch(void)
+int init_switch(void)
 {
 	GPIO_InitTypeDef  GPIO_InitStructure;
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOC, ENABLE);
@@ -57,7 +57,10 @@ void init_switch(void)
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;		
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
 	GPIO_Init(GET_GPIO_TYPE(PIN_SLAVE_C0), &GPIO_InitStructure);
+
+	return RT_EOK;
 }
+INIT_BOARD_EXPORT(init_switch);
 
 static void switch_main_port_0()
 {
