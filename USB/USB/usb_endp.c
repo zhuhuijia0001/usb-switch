@@ -65,7 +65,6 @@ void EP1_OUT_Callback(void)
 	
 	DataLen = GetEPRxCount(ENDP1); 
 	PMAToUserBufferCopy(buffer, ENDP1_RXADDR, DataLen); 
-	SetEPRxValid(ENDP1); 
 
 	u8 cmd = GetPacketCmd(buffer);
 	action_msg msg;
@@ -130,6 +129,8 @@ void EP1_OUT_Callback(void)
 	{
 		notify_action_msg(&msg);
 	}
+
+	SetEPRxValid(ENDP1);
 }
 
 /******************* (C) COPYRIGHT 2008 STMicroelectronics *****END OF FILE****/

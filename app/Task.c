@@ -140,6 +140,7 @@ static void rt_switch_task_entry(void* parameter)
 		case CMD_SWITCH_MAINBOARD:
 			TRACE("start switch mainboard,port:%d\r\n", msg.content.port);
 
+			disable_main_board();
 			delay(100ul);
 			switch_main_board(msg.content.port);
 			
