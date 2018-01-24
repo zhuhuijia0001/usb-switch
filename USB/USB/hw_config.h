@@ -33,7 +33,6 @@ void Enter_LowPowerMode(void);
 void Leave_LowPowerMode(void);
 void USB_Interrupts_Config(void);
 void USB_Cable_Config (FunctionalState NewState);
-void UsbSwitch_Send(const u8 *data, u16 size);
 void Get_SerialNum(void);
 
 #endif  /*__HW_CONFIG_H*/

@@ -16,8 +16,8 @@
 
 /* SECTION: RT_DEBUG */
 /* Thread Debug */
-#define RT_DEBUG
-#define RT_THREAD_DEBUG
+//#define RT_DEBUG
+//#define RT_THREAD_DEBUG
 
 //#define RT_USING_OVERFLOW_CHECK
 
@@ -58,6 +58,8 @@
 
 // <bool name="RT_USING_COMPONENTS_INIT" description="Using RT-Thread components initialization" default="true" />
 #define RT_USING_COMPONENTS_INIT
+
+#define RT_USING_USER_MAIN
 
 /* SECTION: Device System */
 /* Using Device System */

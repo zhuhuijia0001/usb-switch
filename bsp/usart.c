@@ -566,7 +566,7 @@ static void DMA_Configuration(struct rt_serial_device *serial) {
     NVIC_Init(&NVIC_InitStructure);
 }
 
-void rt_hw_usart_init(void)
+int rt_hw_usart_init(void)
 {
     struct stm32_uart* uart;
     struct serial_configure config = RT_SERIAL_CONFIG_DEFAULT;
@@ -639,5 +639,8 @@ void rt_hw_usart_init(void)
                           RT_DEVICE_FLAG_INT_TX |   RT_DEVICE_FLAG_DMA_RX,
                           uart);
 #endif /* RT_USING_UART4 */
+
+	return RT_EOK;
 }
+INIT_BOARD_EXPORT(rt_hw_usart_init);
 

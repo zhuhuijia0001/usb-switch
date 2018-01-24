@@ -400,7 +400,7 @@
             <ScatterFile></ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
-            <Misc></Misc>
+            <Misc>--keep *.o(.rti_fn.*)</Misc>
             <LinkerInputFile></LinkerInputFile>
             <DisabledWarnings></DisabledWarnings>
           </LDads>
@@ -410,16 +410,6 @@
         <Group>
           <GroupName>app</GroupName>
           <Files>
-            <File>
-              <FileName>application.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\app\application.c</FilePath>
-            </File>
-            <File>
-              <FileName>startup.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\app\startup.c</FilePath>
-            </File>
             <File>
               <FileName>trace.h</FileName>
               <FileType>5</FileType>
@@ -449,6 +439,11 @@
               <FileName>Task.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\app\Task.c</FilePath>
+            </File>
+            <File>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\main.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -494,6 +489,16 @@
               <FileName>Switch.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\bsp\Switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>usb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\bsp\usb.c</FilePath>
+            </File>
+            <File>
+              <FileName>usb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\bsp\usb.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -579,6 +584,11 @@
               <FileName>timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\rtos\timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>signal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\rtos\signal.c</FilePath>
             </File>
           </Files>
         </Group>

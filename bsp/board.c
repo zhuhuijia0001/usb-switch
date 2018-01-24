@@ -19,8 +19,6 @@
 #include "board.h"
 #include "usart.h"
 
-#include "Switch.h"
-#include "usb.h"
 
 /**
  * @addtogroup STM32
@@ -72,17 +70,26 @@ void rt_hw_board_init(void)
     /* Configure the SysTick */
     SysTick_Config( SystemCoreClock / RT_TICK_PER_SECOND );
 
-    rt_hw_usart_init();
-   	rt_console_set_device(RT_CONSOLE_DEVICE_NAME);
-
-	/* Initilize switch */
-	//init_switch();
-
-	//init_usb();
+#ifdef RT_USING_HEAP
+#if STM32_EXT_SRAM
+    rt_system_heap_init((void*)STM32_EXT_SRAM_BEGIN, (void*)STM32_EXT_SRAM_END);
+#else
+#ifdef __CC_ARM
+    rt_system_heap_init((void*)&Image$$RW_IRAM1$$ZI$$Limit, (void*)STM32_SRAM_END);
+#elif __ICCARM__
+    rt_system_heap_init(__segment_end("HEAP"), (void*)STM32_SRAM_END);
+#else
+    /* init memory system */
+    rt_system_heap_init((void*)&__bss_end, (void*)STM32_SRAM_END);
+#endif
+#endif  /* STM32_EXT_SRAM */
+#endif /* RT_USING_HEAP */
 	
 #ifdef RT_USING_COMPONENTS_INIT
     rt_components_board_init();
 #endif
+
+	rt_console_set_device(RT_CONSOLE_DEVICE_NAME);
 }
 
 /*@}*/

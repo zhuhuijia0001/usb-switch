@@ -97,6 +97,5 @@ rt_bool_t ParseSWitchSlaveboardPacket(const rt_uint8_t *buf, int *mainPort, int 
 	}
 	
 	return RT_TRUE;
-
 }
 

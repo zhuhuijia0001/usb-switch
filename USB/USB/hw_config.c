@@ -109,35 +109,6 @@ void USB_Interrupts_Config(void)
 	NVIC_Init(&NVIC_InitStructure);   
 }
 
-/*******************************************************************************
-* Function Name : UsbSwitch_Send.
-* Description   : prepares buffer to be sent containing UsbSwitch event infos.
-* Input         : Keys: keys received from terminal.
-* Output        : None.
-* Return value  : None.
-*******************************************************************************/
-void UsbSwitch_Send(const u8 *data, u16 size)
-{
-	u8 buffer[16];
-	u16 i;
-	
-	if (size > 16)
-	{
-		size = 16;
-	}
-  
-	/* prepare buffer to send */
-	for (i = 0; i < size; i++)
-	{
-		buffer[i] = *data++;
-	}
-
-	/*copy mouse position info in ENDP1 Tx Packet Memory Area*/
-	UserToPMABufferCopy(buffer, GetEPTxAddr(ENDP1), size);
-	/* enable endpoint for transmission */
-	SetEPTxValid(ENDP1);
-}
-
 static u8 HexToAscii(u8 hex)
 {
 	if (hex <= 9)
