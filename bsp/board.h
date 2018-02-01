@@ -37,6 +37,10 @@
 #define STM32_SRAM_SIZE         20
 #define STM32_SRAM_END          (0x20000000 + STM32_SRAM_SIZE * 1024)
 
+#if STM32_EXT_SRAM
+#define HEAP_BEGIN   ((void *)STM32_EXT_SRAM_BEGIN)
+#define HEAP_END     ((void *)STM32_EXT_SRAM_END)
+#else
 #ifdef __CC_ARM
 extern int Image$$RW_IRAM1$$ZI$$Limit;
 #define HEAP_BEGIN  ((void *)&Image$$RW_IRAM1$$ZI$$Limit)
@@ -47,8 +51,8 @@ extern int Image$$RW_IRAM1$$ZI$$Limit;
 extern int __bss_end;
 #define HEAP_BEGIN  ((void *)&__bss_end)
 #endif
-#define HEAP_END    STM32_SRAM_END
-
+#define HEAP_END    ((void *)STM32_SRAM_END)
+#endif
 
 // <<< Use Configuration Wizard in Context Menu >>>
 
